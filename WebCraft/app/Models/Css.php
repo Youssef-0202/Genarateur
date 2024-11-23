@@ -18,4 +18,5 @@ class Css extends Model
 {
     return $this->belongsTo(Template::class);
 }
+
 }
