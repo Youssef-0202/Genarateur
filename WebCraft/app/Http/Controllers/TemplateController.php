@@ -47,4 +47,12 @@ class TemplateController extends Controller
         }
         return response()->json(['message' => 'Template not found'], 404);
     }
+
+
+    public function listTemplates()
+    {
+        
+        $templates = Template::all();
+        return view('template.list', compact('templates'));
+    }
 }

@@ -63,7 +63,6 @@
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="#pricing">Pricing</a></li>
           <li><a href="#faq">F.A.Q</a></li>
-
           <li><a href="#contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -86,10 +85,6 @@
         </div>
     @endauth
 @endif
-
-
-
-
     </div>
   </header>
 
