@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zxx" class="js">
 
@@ -59,6 +60,7 @@
                         </div><!-- .nk-sidebar-menu -->
                     </div><!-- .nk-sidebar-content -->
                 </div><!-- .nk-sidebar-element -->
+>>>>>>> 94dd620411bd4faedb3fc6ce4724d76adb8982be
             </div>
             <!-- sidebar @e -->
             <!-- wrap @s -->
@@ -208,6 +210,7 @@
                         <div class="nk-content-inner">
                             <div class="nk-content-body">
                                 <div class="nk-block">
+<<<<<<< HEAD
                                     <div class="card card-bordered">
                                         <div class="card-inner">
                                             <h4 class="title">Welcome to Your Dashboard</h4>
@@ -297,6 +300,10 @@
                                     
                                 </div>
                                 
+=======
+
+                                </div><!-- .nk-block -->
+>>>>>>> 158a6880efd404cf72e9d9c322b6de87565c6923
                             </div>
                         </div>
                     </div>
@@ -306,7 +313,7 @@
                 <div class="nk-footer">
                     <div class="container-fluid">
                         <div class="nk-footer-wrap">
-                            <div class="nk-footer-copyright"> &copy; 2024 Web_Craft. 
+                            <div class="nk-footer-copyright"> &copy; 2024 Web_Craft.
                             </div>
                             <div class="nk-footer-links">
                                 <ul class="nav nav-sm">
