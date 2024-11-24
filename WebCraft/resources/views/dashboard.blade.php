@@ -207,31 +207,96 @@
                     <div class="container-fluid">
                         <div class="nk-content-inner">
                             <div class="nk-content-body">
-                                <div class="nk-block-head nk-block-head-sm">
-                                    <div class="nk-block-between">
-                                        <div class="nk-block-head-content">
-                                            <h3 class="nk-block-title page-title">Dashboard</h3>
-                                        </div><!-- .nk-block-head-content -->
-                                        <div class="nk-block-head-content">
-                                            <div class="toggle-wrap nk-block-tools-toggle">
-                                                <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
-                                                <div class="toggle-expand-content" data-content="pageMenu">
-                                                    <ul class="nk-block-tools g-3">
-                                                        <li>
-                                                            <div class="drodown">
-                                                                <a href="#" class="dropdown-toggle btn btn-white btn-dim btn-outline-light" data-bs-toggle="dropdown"><em class="d-none d-sm-inline icon ni ni-calender-date"></em><span><span class="d-none d-md-inline">Last</span> 30 Days</span><em class="dd-indc icon ni ni-chevron-right"></em></a>
-                                                            </div>
-                                                        </li>
-                                                        <li class="nk-block-tools-opt"><a href="#" class="btn btn-primary"><em class="icon ni ni-reports"></em><span>Add New Site </span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div><!-- .nk-block-head-content -->
-                                    </div><!-- .nk-block-between -->
-                                </div><!-- .nk-block-head -->
                                 <div class="nk-block">
+                                    <div class="card card-bordered">
+                                        <div class="card-inner">
+                                            <h4 class="title">Welcome to Your Dashboard</h4>
+                                            <p>This is where you can manage your website templates and track activity.</p>
                                     
-                                </div><!-- .nk-block -->
+                                            <!-- Add New Site Button -->
+                                            <div class="d-flex justify-content-center mt-3">
+                                                <a href="#" class="btn btn-primary">Add New Site</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="nk-block mt-4">
+                                        <h4 >Your Web Sites :</h2> 
+                                        <div class="row g-gs">
+                                            <!-- Single Site Container -->
+                                            <div class="row g-gs">
+                                                <!-- Single Site Container -->
+                                                <div class="col-md-12"> <!-- Take full width -->
+                                                    <div class="card card-bordered">
+                                                        <div class="card-inner d-flex align-items-center justify-content-between"> <!-- Flex to distribute space -->
+                                                            <!-- Site Image -->
+                                                            <div class="card-image" style="flex-shrink: 0; margin-right: 20px;">
+                                                                <img src="https://via.placeholder.com/100x100" alt="Site Name" class="img-fluid rounded">
+                                                            </div>
+                                                            <!-- Site Details -->
+                                                            <div class="site-details" style="flex-grow:1;"> <!-- Allow text to grow and take available space -->
+                                                                <h5 class="title">My First Website</h5>
+                                                                <p class="text-muted">Created on: November 20, 2024 <br>Last modification: November 30, 2024</p>
+                                                            </div>
+                                                            <!-- Action Buttons (Same line with vertical stack) -->
+                                                            <div class="action-buttons d-flex flex-column">
+                                                                <a href="#" class="btn btn-sm btn-danger mb-2">Delete</a>
+                                                                <a href="#" class="btn btn-sm btn-success mb-2">Stats   </a>
+                                                                <a href="#" class="btn btn-sm btn-primary">Edite    </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                               
+                                                    <!-- Single Site Container -->
+                                                    <div class="col-md-12"> <!-- Take full width -->
+                                                        <div class="card card-bordered">
+                                                            <div class="card-inner d-flex align-items-center justify-content-between"> <!-- Flex to distribute space -->
+                                                                <!-- Site Image -->
+                                                                <div class="card-image" style="flex-shrink: 0; margin-right: 20px;">
+                                                                    <img src="https://via.placeholder.com/100x100" alt="Site Name" class="img-fluid rounded">
+                                                                </div>
+                                                                <!-- Site Details -->
+                                                                <div class="site-details" style="flex-grow:1;"> <!-- Allow text to grow and take available space -->
+                                                                    <h5 class="title">My First Website</h5>
+                                                                    <p class="text-muted">Created on: November 20, 2024 <br>Last modification: November 30, 2024</p>
+                                                                </div>
+                                                                <!-- Action Buttons (Same line with vertical stack) -->
+                                                                <div class="action-buttons d-flex flex-column">
+                                                                    <a href="#" class="btn btn-sm btn-danger mb-2">Delete</a>
+                                                                    <a href="#" class="btn btn-sm btn-success mb-2">Stats   </a>
+                                                                    <a href="#" class="btn btn-sm btn-primary">Edite    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card card-bordered">
+                                                            <div class="card-inner d-flex align-items-center justify-content-between"> <!-- Flex to distribute space -->
+                                                                <!-- Site Image -->
+                                                                <div class="card-image" style="flex-shrink: 0; margin-right: 20px;">
+                                                                    <img src="https://via.placeholder.com/100x100" alt="Site Name" class="img-fluid rounded">
+                                                                </div>
+                                                                <!-- Site Details -->
+                                                                <div class="site-details" style="flex-grow:1;"> <!-- Allow text to grow and take available space -->
+                                                                    <h5 class="title">My First Website</h5>
+                                                                    <p class="text-muted">Created on: November 20, 2024 <br>Last modification: November 30, 2024</p>
+                                                                </div>
+                                                                <!-- Action Buttons (Same line with vertical stack) -->
+                                                                <div class="action-buttons d-flex flex-column">
+                                                                    <a href="#" class="btn btn-sm btn-danger mb-2">Delete</a>
+                                                                    <a href="#" class="btn btn-sm btn-success mb-2">Stats   </a>
+                                                                    <a href="#" class="btn btn-sm btn-primary">Edite    </a>
+                                                                </div>
+                                                            </div>
+                                                          
+                                                    </div>
+                                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
