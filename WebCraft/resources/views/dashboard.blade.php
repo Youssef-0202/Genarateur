@@ -210,7 +210,6 @@
                         <div class="nk-content-inner">
                             <div class="nk-content-body">
                                 <div class="nk-block">
-<<<<<<< HEAD
                                     <div class="card card-bordered">
                                         <div class="card-inner">
                                             <h4 class="title">Welcome to Your Dashboard</h4>
@@ -297,13 +296,9 @@
                                         </div>
                                     </div>
                                     
-                                    
                                 </div>
                                 
-=======
-
-                                </div><!-- .nk-block -->
->>>>>>> 158a6880efd404cf72e9d9c322b6de87565c6923
+</div><!-- .nk-block -->
                             </div>
                         </div>
                     </div>
