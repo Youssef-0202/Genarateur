@@ -10,7 +10,7 @@ class Template extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nom', 'description','image'
+        'nom', 'description','image','path'
     ];
 
     public function website()
