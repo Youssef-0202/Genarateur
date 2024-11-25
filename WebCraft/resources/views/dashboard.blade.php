@@ -29,7 +29,7 @@
                 <div class="nk-sidebar-element nk-sidebar-head">
                     <div class="nk-sidebar-brand">
                         <a href="html/index.html" class="logo-link nk-sidebar-logo">
-                            <h3 class="sitename">WebCraft</h1>
+                            <h3 class="sitename">WebCraft</h3>
                         </a>
                     </div>
                     <div class="nk-menu-trigger me-n2">
@@ -42,25 +42,25 @@
                         <div class="nk-sidebar-menu" data-simplebar>
                             <ul class="nk-menu">
                                 <li class="nk-menu-heading">
-                                    <h6 class="overline-title text-primary-alt">Use-Case Preview</h6>
+                                    <h6 class="overline-title text-primary-alt">Menu</h6>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="html/ecommerce/index.html" class="nk-menu-link">
+                                    <a href="{{ route('dashboard') }}" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-bag"></em></span>
                                         <span class="nk-menu-text">Dashboard</span><span class="nk-menu-badge">HOT</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="html/lms/index.html" class="nk-menu-link">
+                                    <a href="{{ route('templates.list') }}" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-book-read"></em></span>
-                                        <span class="nk-menu-text">Eplorer</span><span class="nk-menu-badge">HOT</span>
+                                        <span class="nk-menu-text">Template Gallery</span><span class="nk-menu-badge">HOT</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
                             </ul><!-- .nk-menu -->
                         </div><!-- .nk-sidebar-menu -->
                     </div><!-- .nk-sidebar-content -->
                 </div><!-- .nk-sidebar-element -->
->>>>>>> 94dd620411bd4faedb3fc6ce4724d76adb8982be
+
             </div>
             <!-- sidebar @e -->
             <!-- wrap @s -->
@@ -214,16 +214,16 @@
                                         <div class="card-inner">
                                             <h4 class="title">Welcome to Your Dashboard</h4>
                                             <p>This is where you can manage your website templates and track activity.</p>
-                                    
+
                                             <!-- Add New Site Button -->
                                             <div class="d-flex justify-content-center mt-3">
                                                 <a href="#" class="btn btn-primary">Add New Site</a>
                                             </div>
                                         </div>
                                     </div>
-                                
+
                                     <div class="nk-block mt-4">
-                                        <h4 >Your Web Sites :</h2> 
+                                        <h4 >Your Web Sites :</h2>
                                         <div class="row g-gs">
                                             <!-- Single Site Container -->
                                             <div class="row g-gs">
@@ -249,7 +249,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                               
+
                                                     <!-- Single Site Container -->
                                                     <div class="col-md-12"> <!-- Take full width -->
                                                         <div class="card card-bordered">
@@ -289,15 +289,15 @@
                                                                     <a href="#" class="btn btn-sm btn-primary">Edite    </a>
                                                                 </div>
                                                             </div>
-                                                          
+
                                                     </div>
-                                                    
+
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
-                                
+
 </div><!-- .nk-block -->
                             </div>
                         </div>

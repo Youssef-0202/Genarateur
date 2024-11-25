@@ -51,8 +51,33 @@ class TemplateController extends Controller
 
     public function listTemplates()
     {
-        
+
         $templates = Template::all();
-        return view('template.list', compact('templates'));
+        return view('templates.template-gallery', compact('templates'));
     }
+
+
+
+    public function showTemplate($id)
+    {
+        $template = Template::find($id);
+
+        if (!$template) {
+            abort(404, 'Template not found');
+        }
+
+
+
+        if ($template->nom === 'ILanding') {
+            return view('templates.show-one', compact('template'));
+        }
+
+        return redirect('/');
+    }
+
+
+
+
+
+
 }

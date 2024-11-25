@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 
 Route::get('/', function () {
-    return view('welcome'); 
+    return view('welcome');
 });
 
 Route::middleware([
@@ -25,7 +25,14 @@ Route::middleware([
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
 
-Route::get('templates', [TemplateController::class, 'listTemplates'])->name('templates.list');
+//Route::get('/templates', [TemplateController::class, 'listTemplates'])->name('templates.list');
+
+Route::get('/templateGallery', [TemplateController::class, 'listTemplates'])->name('templates.list');
+
+Route::get('/template/{id}', [TemplateController::class, 'showTemplate'])->name('template.show');
+
+
+
 Route::get('/test/{id}', [TestController::class, 'index'])->name('test');
 
 

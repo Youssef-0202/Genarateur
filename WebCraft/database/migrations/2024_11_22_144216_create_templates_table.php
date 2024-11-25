@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('templates', function (Blueprint $table) {
             $table->id(); // Primary Key
             $table->string('nom');
+            $table->text('description');
+            $table->string('image')->nullable(); // Chemin de l'image
             $table->timestamps();
         });
     }
