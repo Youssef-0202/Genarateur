@@ -72,6 +72,23 @@ class TemplateController extends Controller
             return view('templates.show-one', compact('template'));
         }
 
+        if ($template->nom === 'Restoran') {
+            return view('templates.show-restoran', compact('template'));
+        }
+
+
+
+        if ($template->nom === 'Coza Store') {
+            return view('templates.show-cozaStore', compact('template'));
+        }
+
+
+        if ($template->nom === 'eLearning') {
+            return view('templates.show-eLearning', compact('template'));
+        }
+
+
+
         return redirect('/');
     }
 
