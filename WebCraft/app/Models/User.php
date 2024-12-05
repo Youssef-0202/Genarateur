@@ -43,10 +43,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'two_factor_secret',
     ];
 
-    public function userSetting()
-    {
-        return $this->hasOne(UserSetting::class);
-    }
+    
 
     public function websites()
 {

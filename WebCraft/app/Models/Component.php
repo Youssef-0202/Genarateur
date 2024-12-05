@@ -17,10 +17,14 @@ class Component extends Model
         'page_id',
     ];
 
-    public function page()
-{
-    return $this->belongsTo(Page::class);
-}
+    
+
+    public function templates()
+    {
+        return $this->belongsToMany(Template::class, 'gestionnaire_de_contenu')
+                    ->withPivot('nom', 'ordre', 'slug', 'type', 'contenu')
+                    ->withTimestamps();
+    }
 
 public function text()
 {
