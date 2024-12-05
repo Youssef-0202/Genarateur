@@ -10,23 +10,20 @@ class Template extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nom', 'description','image','path'
+        'nom', 'description', 'image', 'path'
     ];
 
-    public function website()
-{
-    return $this->belongsTo(Website::class);
-}
 
-public function structure()
-{
-    return $this->hasOne(Structure::class);
-}
+    public function components()
+    {
+        return $this->belongsToMany(Component::class, 'gestionnaire_de_contenu')
+                    ->withPivot('nom', 'ordre', 'slug', 'type', 'contenu')
+                    ->withTimestamps();
+    }
 
-public function css()
-{
-    return $this->hasOne(Css::class);
-}
-
+    public function websites()
+    {
+        return $this->hasMany(Website::class);
+    }
 
 }

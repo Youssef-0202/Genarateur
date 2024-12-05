@@ -24,13 +24,7 @@ class Website extends Model
 }
 
 public function template()
-{
-    return $this->hasOne(Template::class);
-}
-
-public function pages()
-{
-    return $this->hasMany(Page::class);
-}
-
+    {
+        return $this->belongsTo(Template::class);
+    }
 }
