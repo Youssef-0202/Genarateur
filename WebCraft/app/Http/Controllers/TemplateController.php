@@ -78,7 +78,7 @@ class TemplateController extends Controller
 
 
 
-        if ($template->nom === 'Coza Store') {
+        if ($template->nom === 'Cosa Store') {
             return view('templates.show-cozaStore', compact('template'));
         }
 
@@ -88,7 +88,7 @@ class TemplateController extends Controller
         }
 
 
-        if ($template->nom === 'Orthoc') {
+        if ($template->nom === 'MediCare') {
             return view('templates.show-orthoc', compact('template'));
         }
 
