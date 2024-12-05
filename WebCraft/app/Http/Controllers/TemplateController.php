@@ -88,6 +88,11 @@ class TemplateController extends Controller
         }
 
 
+        if ($template->nom === 'Orthoc') {
+            return view('templates.show-orthoc', compact('template'));
+        }
+
+
 
         return redirect('/');
     }
