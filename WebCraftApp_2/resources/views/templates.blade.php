@@ -1,16 +1,14 @@
 <!-- resources/views/layouts/app.blade.php -->
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Templates</title>
+    <title>Modèles - WebCraft</title>
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
     @if (Request::is('register'))
         <link rel="stylesheet" href="{{ asset('css/register.css') }}">
     @endif
@@ -18,23 +16,23 @@
         <link rel="stylesheet" href="{{ asset('css/login.css') }}">
     @endif
 </head>
-
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+    <nav class="navbar navbar-expand-lg custom-navbar">
         <div class="container">
             <a class="navbar-brand text-white fw-bold" href="{{ url('/templates') }}">WebCraft</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item me-4">
                         <a class="nav-link text-white" href="{{ url('/templates') }}">Modèles</a>
                     </li>
                     <li class="nav-item">
                         <a class="btn btn-primary text-white" href="/login">Se déconnecter</a>
                     </li>
+
                 </ul>
             </div>
         </div>
@@ -44,22 +42,25 @@
     <main>
         <div class="container my-5">
             <h2 class="text-center">Modèles</h2>
-            <p class="lead text-center">Découvrez les modèles de sites web proposés par notre générateur WebCraft.</p>
+            <p class="lead text-center">Créez votre site idéal avec les modèles uniques de WebCraft.</p>
         </div>
         <!-- Template Gallery Section -->
         <section id="templates" class="template-section py-5">
             <div class="container">
                 <h2 class="text-center mb-5">Choisissez votre modèle</h2>
-                <div class="row g-4">
+                <div class="template-list d-flex flex-column align-items-center gap-5">
                     @foreach ($templates as $template)
-                        <div class="col-lg-4 col-md-6">
-                            <div class="card template-card shadow-sm">
+                        <div class="template-card card shadow-sm">
+                            <div class="card-img-container position-relative">
                                 <img src="{{ $template->imagePrev }}" class="card-img-top" alt="{{ $template->nom }}">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">{{ $template->nom }}</h5>
-                                    <p class="card-text">Se destine aux petites entreprises et aux agences. Son design chaleureux et propre.</p>
-                                    <a href="{{ route('templates.show', $template->templateId) }}" class="stretched-link"></a>
+                                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                                    <i class="fas fa-eye fa-2x"></i>
                                 </div>
+                            </div>
+                            <div class="card-body text-center">
+                                <h5 class="card-title">{{ $template->nom }}</h5>
+                                <p class="card-text">{{ $template->description ?? 'Parfait pour les petites entreprises et agences, avec un design chaleureux et épuré.' }}</p>
+                                <a href="{{ route('templates.show', $template->templateId) }}" class="btn btn-outline-primary">Voir le modèle</a>
                             </div>
                         </div>
                     @endforeach
@@ -71,173 +72,279 @@
     <!-- Footer -->
     <x-footer />
 
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
-        // GSAP Animations for Template Section
         window.onload = () => {
-            gsap.from('.template-section h2', {
+            gsap.from('.template-section h2, .template-section .lead', {
                 duration: 1,
                 y: -50,
                 opacity: 0,
-                ease: 'power2.out'
+                ease: 'power3.out'
             });
             gsap.from('.template-card', {
                 duration: 1,
                 opacity: 0,
+                x: 20,
                 y: 50,
                 stagger: 0.2,
                 delay: 0.5,
-                ease: 'power2.out'
+                ease: 'power3.out'
+            });
+            gsap.from('.template-card .card-img-overlay', {
+                duration: 0.5,
+                opacity: 0,
+                scale: 0.8,
+                delay: 1,
+                stagger: 0.2,
+                ease: 'power3.out'
             });
         };
     </script>
 
-    <style>
-        /* Navbar Styles */
-        .custom-navbar {
-            background: linear-gradient(135deg, #2d3436, #d35400); /* Charcoal gray to burnt orange gradient */
-            border-bottom: 2px solid #dfe6e9; /* Light gray border */
-            padding: 10px 0;
-        }
+<style>
+    /* Global Body Style */
+    body {
+        background-color: #f7f1e3; /* Creamy off-white */
+        font-family: 'Poppins', sans-serif;
+        color: #2d3436; /* Charcoal gray */
+    }
 
-        .custom-navbar .navbar-brand {
-            font-family: 'Poppins', sans-serif;
-            color: #f7f1e3; /* Creamy off-white */
-            font-size: 1.8rem;
-        }
+    /* Navbar Styles */
+    .custom-navbar {
+        background: linear-gradient(135deg, #2d3436, #d35400); /* Charcoal gray to burnt orange */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        padding: 12px 0;
+    }
 
-        .custom-navbar .nav-link {
-            color: #f7f1e3; /* Creamy off-white */
-            font-weight: 500;
-            font-size: 1rem;
-            padding: 8px 12px;
-            transition: color 0.3s ease, background-color 0.3s ease;
-        }
+    .custom-navbar .navbar-brand {
+        color: #f7f1e3; /* Creamy off-white */
+        font-size: 1.8rem;
+        font-weight: 700;
+        transition: color 0.3s ease;
+    }
 
-        .custom-navbar .nav-link:hover {
-            color: #ff7675; /* Soft coral */
-            background-color: rgba(255, 118, 117, 0.1); /* Subtle coral background */
-            border-radius: 4px;
-        }
+    .custom-navbar .navbar-brand:hover {
+        color: #ff7675; /* Soft coral */
+    }
 
-        .custom-navbar .btn-primary {
-            background-color: #e67e22; /* Warm pumpkin orange */
-            border-color: #d35400; /* Darker orange border */
-            color: #fff;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
+    .custom-navbar .nav-link {
+        color: #f7f1e3; /* Creamy off-white */
+        font-weight: 500;
+        font-size: 1rem;
+        padding: 8px 15px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
 
-        .custom-navbar .btn-primary:hover {
-            background-color: #d35400; /* Darker orange */
-            border-color: #b53c00; /* Even darker border */
-            color: #fff;
-        }
+    .custom-navbar .nav-link:hover {
+        color: #ff7675; /* Soft coral */
+        background-color: rgba(255, 118, 117, 0.15); /* Subtle coral background */
+    }
 
-        /* Main Content Styles */
-        body {
-            background-color: #f7f1e3; /* Creamy off-white background for the page */
-            font-family: 'Poppins', sans-serif;
-            color: #2d3436; /* Charcoal gray text */
-        }
+    .custom-navbar .btn-primary {
+        background-color: #e67e22; /* Pumpkin orange */
+        border: none;
+        font-weight: 500;
+        padding: 8px 20px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
 
-        .container.my-5 h2 {
-            color: #2d3436; /* Charcoal gray */
-            font-weight: 700;
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
+    .custom-navbar .btn-primary:hover {
+        background-color: #d35400; /* Burnt orange */
+        transform: translateY(-2px); /* Slight lift */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
 
-        .container.my-5 p.lead {
-            color: #636e72; /* Muted gray */
-            font-weight: 300;
-            font-size: 1.25rem;
-        }
+    /* Main */
+    main {
+        margin-bottom: 40px; /* Reduced space before footer */
+    }
 
-        /* Template Section Styles */
+    /* Template Section */
+    .template-section {
+        background-color: #f7f1e3; /* Creamy off-white to match body */
+        padding: 60px 0 40px 0; /* Reduced bottom padding */
+    }
+
+    .template-section h2 {
+        color: #2d3436; /* Charcoal gray */
+        font-weight: 700;
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .template-section .lead {
+        color: #636e72; /* Muted gray */
+        font-weight: 300;
+        font-size: 1.25rem;
+        transition: color 0.3s ease;
+    }
+
+    .template-section .lead:hover {
+        color: #e67e22; /* Pumpkin orange */
+    }
+
+    .template-list {
+        max-width: 700px; /* Card width */
+        margin: 0 auto;
+        gap: 2.5rem; /* Optimized gap */
+    }
+
+    .template-card {
+        background-color: #fff; /* White for contrast with section background */
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border: 1px solid #dfe6e9;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+        width: 100%;
+    }
+
+    .template-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        border: 2px solid #e67e22; /* Pumpkin orange */
+    }
+
+    .template-card .card-img-container {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .template-card .card-img-top {
+        border-radius: 10px 10px 0 0;
+        height: 200px;
+        object-fit: cover;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        transition: transform 0.5s ease, opacity 0.3s ease;
+    }
+
+    .template-card:hover .card-img-top {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+
+    .template-card .card-img-overlay {
+        opacity: 0;
+        background-color: rgba(230, 126, 34, 0.3);
+        transition: opacity 0.3s ease;
+    }
+
+    .template-card:hover .card-img-overlay {
+        opacity: 1;
+    }
+
+    .template-card .card-img-overlay i {
+        color: #fff;
+        animation: pulse 1.5s infinite;
+        transition: transform 0.3s ease;
+    }
+
+    .template-card:hover .card-img-overlay i {
+        transform: scale(1.2);
+    }
+
+    .template-card .card-body {
+        padding: 25px;
+    }
+
+    .template-card .card-title {
+        color: #2d3436;
+        font-weight: 500;
+        font-size: 1.25rem;
+        margin-bottom: 12px;
+    }
+
+    .template-card .card-text {
+        color: #636e72;
+        font-weight: 300;
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+
+    .template-card .btn-outline-primary {
+        border-color: #e67e22;
+        color: #e67e22;
+        font-weight: 500;
+        padding: 8px 20px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+    .template-card .btn-outline-primary:hover {
+        background-color: #e67e22;
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Pulsing Animation */
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 991px) {
+        .custom-navbar .nav-item {
+            margin-bottom: 10px;
+        }
+        .custom-navbar .nav-item.me-4 {
+            margin-right: 0;
+        }
+    }
+
+    @media (max-width: 768px) {
+        main {
+            margin-bottom: 30px;
+        }
         .template-section {
-            background-color: #fff; /* White background for contrast */
-            padding: 60px 0;
+            padding: 40px 0 30px 0;
         }
-
         .template-section h2 {
-            color: #2d3436; /* Charcoal gray */
-            font-weight: 700;
             font-size: 2rem;
-            margin-bottom: 40px;
         }
-
-        .template-card {
-            background-color: #f7f1e3; /* Creamy off-white card background */
-            border: none;
-            border-radius: 10px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            overflow: hidden;
+        .template-section .lead {
+            font-size: 1.1rem;
         }
-
-        .template-card:hover {
-            transform: translateY(-5px); /* Slight lift on hover */
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Deeper shadow */
+        .template-card .card-title {
+            font-size: 1.1rem;
         }
-
-        .template-card img {
-            height: 200px;
-            object-fit: cover;
+        .template-card .card-text {
+            font-size: 0.85rem;
         }
-
         .template-card .card-body {
             padding: 20px;
         }
-
-        .template-card .card-title {
-            color: #2d3436; /* Charcoal gray */
-            font-weight: 600;
-            font-size: 1.25rem;
-            margin-bottom: 10px;
+        .template-card .card-img-top {
+            height: 150px;
         }
-
-        .template-card .card-text {
-            color: #636e72; /* Muted gray */
-            font-weight: 300;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
+        .template-list {
+            gap: 2rem;
         }
+    }
 
-        .template-card .stretched-link::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 1;
+    @media (max-width: 576px) {
+        main {
+            margin-bottom: 20px;
         }
-
-        /* Responsive Adjustments */
-        @media (max-width: 991px) {
-            .custom-navbar .nav-item {
-                margin-bottom: 10px;
-            }
-            .custom-navbar .nav-item.me-4 {
-                margin-right: 0;
-            }
+        .template-section {
+            padding: 30px 0 20px 0;
         }
-
-        @media (max-width: 768px) {
-            .container.my-5 h2 {
-                font-size: 2rem;
-            }
-            .container.my-5 p.lead {
-                font-size: 1rem;
-            }
-            .template-section h2 {
-                font-size: 1.75rem;
-            }
-            .template-card img {
-                height: 150px;
-            }
+        .template-section h2 {
+            font-size: 1.75rem;
         }
-    </style>
-</body>
-
-</html>
+        .template-section .lead {
+            font-size: 1rem;
+        }
+        .template-list {
+            max-width: 100%;
+            gap: 1.5rem;
+        }
+    }
+</style>
