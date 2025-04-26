@@ -22,6 +22,10 @@ Route::get('/features', function () {
     return view('features');
 });
 
+Route::get('/generationSite', function () {
+    return view('templategenerer');
+});
+
 
 Route::get('/contact', function(){
     return view('contact');
