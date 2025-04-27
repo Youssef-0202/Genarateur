@@ -14,7 +14,9 @@
 <body>
     <!-- Barre de navigation -->
     <nav class="navbar">
-        <a href="{{ url('/templates') }}" class="btn btn-secondary">Retour aux modèles</a>
+        <div class="nav-left">
+            <a href="{{ url('/templates') }}" class="btn btn-secondary">Retour aux modèles</a>
+        </div>
         <div class="nav-buttons">
             <button onclick="changePreview('desktop')" title="Bureau" class="preview-btn">
                 <i class="bi bi-display"></i>
@@ -25,6 +27,11 @@
             <button onclick="changePreview('mobile')" title="Mobile" class="preview-btn">
                 <i class="bi bi-phone"></i>
             </button>
+        </div>
+        <div class="nav-right">
+            <a href="{{ route('template.generate', ['id' => $template->templateId]) }}" class="btn btn-primary">
+                <i class="bi bi-file-earmark-code"></i> Générer HTML
+            </a>
         </div>
     </nav>
 

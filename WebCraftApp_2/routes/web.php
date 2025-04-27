@@ -22,9 +22,12 @@ Route::get('/features', function () {
     return view('features');
 });
 
-Route::get('/generationSite', function () {
-    return view('templategenerer');
-});
+Route::get('/generationSite/{id}', function ($id) {     
+    $template = App\Models\Template::where('templateId', $id)->firstOrFail();  
+    return view('templategenerer', compact('template')); 
+})->name('generation.site');
+
+Route::get('/templates/{id}/generate', [TemplateController::class, 'generateHtml'])->name('template.generate');
 
 
 Route::get('/contact', function(){

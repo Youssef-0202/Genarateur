@@ -8,11 +8,113 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Ramsey\Uuid\Type\Integer;
 use App\Models\UserTemplate;
+use Illuminate\Support\Facades\File;
+use ZipArchive;
 
 class TemplateController extends Controller
 {
      // Define the mapping of template IDs to Blade file paths
-
+    
+     public function generateHtml($id)
+{
+    // Récupérer le template
+    $template = Template::where('templateId', $id)->first();
+    
+    if (!$template) {
+        return abort(404, 'Template non trouvé');
+    }
+    
+    // Initialiser les données des composants
+    $componentsData = [];
+    
+    // Vérifier si l'utilisateur est authentifié
+    if (auth()->check()) {
+        // Récupérer le template personnalisé de l'utilisateur, s'il existe
+        $userTemplate = UserTemplate::where('template_id', $id)
+            ->where('user_id', auth()->id())
+            ->first();
+            
+        if ($userTemplate) {
+            // Charger les données personnalisées des composants
+            $componentsData = json_decode($userTemplate->components_data, true);
+        } else {
+            // Utiliser les composants par défaut
+            $componentsData = $this->getDefaultComponents($id);
+        }
+    } else {
+        // Charger les composants par défaut pour les utilisateurs non authentifiés
+        $componentsData = $this->getDefaultComponents($id);
+    }
+    
+    // Utiliser la vue du template brut
+    $htmlContent = view('templates.raw_template', compact('componentsData', 'template'))->render();
+    
+    // Générer un nom de dossier unique
+    $folderName = 'site_' . $template->nom . '_' . now()->format('Ymd_His');
+    $zipFileName = $folderName . '.zip';
+    
+    // Créer un dossier temporaire pour stocker tous les fichiers
+    $tempPath = storage_path('app/temp/' . $folderName);
+    if (!File::exists($tempPath)) {
+        File::makeDirectory($tempPath, 0755, true);
+    }
+    
+    // Copier le dossier assets
+    $assetsSourcePath = public_path('assets');
+    $assetsDestPath = $tempPath . '/assets';
+    File::copyDirectory($assetsSourcePath, $assetsDestPath);
+    
+    // Créer les dossiers js et css s'ils n'existent pas
+    if (!File::exists($tempPath . '/js')) {
+        File::makeDirectory($tempPath . '/js', 0755, true);
+    }
+    if (!File::exists($tempPath . '/css')) {
+        File::makeDirectory($tempPath . '/css', 0755, true);
+    }
+    
+    // Copier les fichiers JS et CSS
+    File::copy(public_path('js/scriptsTemp1.js'), $tempPath . '/js/scriptsTemp1.js');
+    File::copy(public_path('css/temp1.css'), $tempPath . '/css/temp1.css');
+    
+    // Sauvegarder le HTML dans le dossier temporaire
+    File::put($tempPath . '/index.html', $htmlContent);
+    
+    // Créer un fichier zip contenant tous les fichiers
+    $zipPath = storage_path('app/temp/' . $zipFileName);
+    $zip = new ZipArchive();
+    
+    if ($zip->open($zipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) === TRUE) {
+        // Fonction récursive pour ajouter des fichiers au zip
+        $addFilesToZip = function ($directory, $zipBasePath = '') use (&$addFilesToZip, $zip, $tempPath) {
+            $files = new \RecursiveIteratorIterator(
+                new \RecursiveDirectoryIterator($directory),
+                \RecursiveIteratorIterator::LEAVES_ONLY
+            );
+            
+            foreach ($files as $file) {
+                if (!$file->isDir()) {
+                    $filePath = $file->getRealPath();
+                    $relativePath = $zipBasePath . substr($filePath, strlen($tempPath) + 1);
+                    
+                    $zip->addFile($filePath, $relativePath);
+                }
+            }
+        };
+        
+        // Ajouter tous les fichiers du dossier temporaire au zip
+        $addFilesToZip($tempPath, '');
+        
+        $zip->close();
+    }
+    
+    // Nettoyer le dossier temporaire après la création du zip
+    File::deleteDirectory($tempPath);
+    
+    // Retourner le fichier zip en téléchargement
+    return response()->download($zipPath, $zipFileName, [
+        'Content-Type' => 'application/zip',
+    ])->deleteFileAfterSend(true);
+}
 
    
     /**
