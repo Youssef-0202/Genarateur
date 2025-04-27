@@ -27,7 +27,7 @@
             <div class="container">
                 <a class="navbar-brand text-white fw-bold" href="#">
                     @if(isset($componentsData['Navbar']['logo']))
-                        <img src="{{ $componentsData['Navbar']['logo'] }}" alt="Logo" height="30">
+                    <img src="assets/img/logo.png" alt="Logo" />
                     @else
                         {{ $template->nom ?? 'WebCraft' }}
                     @endif

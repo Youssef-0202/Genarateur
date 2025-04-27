@@ -18,7 +18,7 @@
         <!-- Sidebar -->
         <div class="sidebar p-4">
             <h4 class="mb-4">Menu de personnalisation</h4>
-            <a href="/generationSite" class="btn btn-success mb-4">Save All Changes</a>
+            <a href="/generationSite/1" class="btn btn-success mb-4">Save All Changes</a>
             <div id="form-container">
                 <p class="text-muted">Click a section in the template to edit it.</p>
             </div>
