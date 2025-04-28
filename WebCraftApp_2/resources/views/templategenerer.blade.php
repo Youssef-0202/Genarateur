@@ -10,6 +10,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Lien vers Google Fonts pour Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <!-- Lien vers SweetAlert2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 </head>
 <body>
     <!-- Barre de navigation -->
@@ -29,12 +31,11 @@
             </button>
         </div>
         <div class="nav-right">
-            <a href="{{ route('template.generate', ['id' => $template->templateId]) }}" class="btn btn-primary">
-                <i class="bi bi-file-earmark-code"></i> Générer HTML
+            <a href="{{ route('template.generate', ['id' => $template->templateId]) }}" class="btn btn-primary" id="generate-html">
+                <i class="bi bi-file-earmark-code"></i> Générer
             </a>
         </div>
     </nav>
-
 
     <!-- Conteneur principal -->
     <div class="main-content">
@@ -45,7 +46,10 @@
 
     <!-- JavaScript Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+        // Fonction pour changer la prévisualisation
         function changePreview(mode) {
             const frame = document.getElementById("preview-frame");
 
@@ -67,6 +71,28 @@
                     console.error("Mode inconnu :", mode);
             }
         }
+
+        // Gestion du clic sur le bouton "Générer HTML"
+        document.getElementById("generate-html").addEventListener("click", function(event) {
+            event.preventDefault(); // Empêche le comportement par défaut pour tester l'alerte
+
+            // Afficher l'alerte SweetAlert2
+            Swal.fire({
+                title: "Votre template est prêt !",
+                text: "Cliquez sur OK pour lancer le téléchargement.",
+                icon: "success",
+                confirmButtonText: "OK",
+                customClass: {
+                    popup: 'swal2-custom-popup',
+                    title: 'swal2-custom-title',
+                    content: 'swal2-custom-content',
+                    confirmButton: 'swal2-custom-button'
+                }
+            }).then(() => {
+                // Rediriger vers l'URL de génération après la fermeture de l'alerte
+                window.location.href = this.getAttribute("href");
+            });
+        });
     </script>
 
     <style>
@@ -219,6 +245,38 @@
             .nav-buttons .preview-btn {
                 padding: 8px;
             }
+        }
+
+        /* Styles personnalisés pour SweetAlert2 */
+        .swal2-custom-popup {
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .swal2-custom-title {
+            font-family: 'Poppins', sans-serif;
+            color: #2d3436;
+            font-weight: 700;
+        }
+
+        .swal2-custom-content {
+            font-family: 'Poppins', sans-serif;
+            color: #2d3436;
+            font-weight: 300;
+        }
+
+        .swal2-custom-button {
+            background-color: #e67e22 !important;
+            border: none !important;
+            color: #fff !important;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            border-radius: 5px !important;
+            transition: background-color 0.3s ease !important;
+        }
+
+        .swal2-custom-button:hover {
+            background-color: #d35400 !important;
         }
     </style>
 </body>

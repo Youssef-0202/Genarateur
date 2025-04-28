@@ -18,9 +18,10 @@
         <!-- Sidebar -->
         <div class="sidebar p-4">
             <h4 class="mb-4">Menu de personnalisation</h4>
-            <a href="/generationSite/1" class="btn btn-success mb-4">Save All Changes</a>
+            <a href="/generationSite/1" class="btn btn-success mb-3">Enregistrer toutes les modifications</a>
+            <a href="http://127.0.0.1:8000/templates/1" class="btn btn-secondary mb-4">Retour</a>
             <div id="form-container">
-                <p class="text-muted">Click a section in the template to edit it.</p>
+                <p class="edit-instruction">Cliquez sur une section du template pour la modifier.</p>
             </div>
         </div>
 
@@ -425,11 +426,46 @@
             margin-bottom: 20px;
         }
 
-        .sidebar .text-muted {
-            color: #f7f1e3; /* Creamy off-white */
+        .sidebar .edit-instruction {
+            color: #f7f1e3; /* Creamy off-white, light color for instruction text */
             font-weight: 300;
             font-size: 0.9rem;
             opacity: 0.8;
+        }
+
+        .sidebar .btn-success {
+            background-color: #28a745; /* Bootstrap success green */
+            border: none;
+            color: #fff;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%;
+            text-align: center;
+        }
+
+        .sidebar .btn-success:hover {
+            background-color: #218838; /* Darker green */
+            transform: translateY(-2px); /* Slight lift */
+        }
+
+        .sidebar .btn-secondary {
+            background-color: #636e72; /* Muted gray */
+            border: none;
+            color: #f7f1e3; /* Creamy off-white text */
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%;
+            text-align: center;
+        }
+
+        .sidebar .btn-secondary:hover {
+            background-color: #e67e22; /* Warm pumpkin orange */
+            color: #fff;
+            transform: translateY(-2px); /* Slight lift */
         }
 
         /* Scrollbar Styling */
